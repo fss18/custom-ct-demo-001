@@ -109,6 +109,7 @@ AWS Control Tower automatically aggregates all security notification into the `A
 ## Lab C - Deploy Custom AWS SCP ##
 In this section of the lab, you will create new Preventive guardrail that will prevent you from creating resource that did not align with the compliance requirements.
 
+#### Step 4 - Download sample SCP
 **Download** all SCP's below and save it in your computer before you proceed.
 
 | Guardrail Name | Outcomes |
@@ -122,6 +123,7 @@ In this section of the lab, you will create new Preventive guardrail that will p
 First you need to build the new SCP based on the example JSON file that you downloaded earlier.
 
 5.1. Log in to Control Tower `Master` account using Administrator role.
+
 5.2. Click [**HERE**](https://console.aws.amazon.com/organizations/)  to sign in to the Organizations console.
 
  - On the **Policies** tab, choose **Service control policies**.
@@ -129,7 +131,9 @@ First you need to build the new SCP based on the example JSON file that you down
  - On the **Create policy** page, enter a name and description for the policy. Use the table above as reference for the SCP name.
 
 5.3. On the **Policy** statement page, copy the content of the JSON SCP file that you downloaded earlier and paste it into the policy statement field.
+
 5.4. Choose **Create Policy** to confirm.
+
 5.5. Repeat step 5.2 and 5.4 for all SCP document.
 
 **NOTE**:
@@ -144,9 +148,11 @@ Next you will apply this SCP to one target OU of your choice. Make sure you have
 > We strongly recommends that you don't attach SCPs to the root of your organization and the Core OU without thoroughly testing the impact that the policy has on accounts.
 
 6.1. Click [**HERE**](https://console.aws.amazon.com/organizations/)  to sign in to the Organizations console.
- 6.2 On the **Organize accounts** tab, choose the target `AWS OU` for test from the left navigation panel.
+
+6.2 On the **Organize accounts** tab, choose the target `AWS OU` for test from the left navigation panel.
  - In the details pane on the right side, choose **Service control policies**.
  - On the **Service control policies** page, select the SCP that you want and choose **Attach**.
+
 6.3 Repeat step 6.2 for other SCP that you would like to apply and test.
 
 #### Step 7 - Test the SCP effect to Accounts under the target OU
@@ -157,6 +163,7 @@ As of time of writing, custom preventive guardrail (SCP) is not visible in the C
 > you need to perform this action on another AWS account that is member of the AWS Control Tower, consider using separate browser session.
 
 7.1. Log in to one of the linked AWS account that belongs to the `AWS OU ID` that you specified previously.  
+
 7.2. Perform action such as:
 - [Create EBS volume without encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html) or launch EC2 instance without enabling EBS encryption.
 - [Create S3 Bucket without default encryption](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) and then try to put object without any encryption specified.
@@ -175,17 +182,28 @@ This service catalog porfolio will be deployed directly to the individual target
 > you need to perform this action on another AWS account that is member of the AWS Control Tower, consider using separate browser session.
 
 8.1. Log in to one of the linked AWS account that belongs to the `AWS OU ID` that you specified previously.  
+
 8.2 Click [**HERE**](https://console.aws.amazon.com/iam/home#/roles) to jump to IAM role console.
+
 8.3. Use the search box and type `AWSReservedSSO_AWSAdministratorAccess`
+
 8.4 Click on the role name to open the role **Summary** page.
+
 8.5. Take a note of the **Role Name**, it should be in format `AWSReservedSSO_AWSAdministratorAccess_xxxxxxxxxx`
+
 8.6. Click on the Launch Stack button below to start deploying the stack.
 [![LaunchStack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation#/stacks/create?templateURL=https://s3.amazonaws.com/wellysiauw-deployment.us-east-1/service-catalog/sc-portfolio-encrypt.json)
+
 8.7. While on **Create Stackset** page, Choose **NEXT**.
+
 8.8. On **Specify Stackset details** page, enter your choice for **Stack name**
+
 8.9. Under parameter **LinkedRole1** enter the **IAM Role Name** that you copied on step 8.5.
+
 8.10. Choose **NEXT**
+
 8.11. On **Configure stack options** page, leave the default settings and choose **NEXT**
+
 8.12. On **Review** page, make sure to select checkbox for
 
  - **I acknowledge that AWS CloudFormation might create IAM resources with custom names.**
@@ -201,11 +219,19 @@ Now you can use the Service Catalog product from the portfolio and provision cer
 > You must login using AWS SSO with role AWSReservedSSO_AWSAdministratorAccess_xxxxxxxxxx in order to access service catalog product
 
 9.1. Log in to one of the linked AWS account that belongs to the `AWS OU ID` that you specified previously.  
+
 9.2. Click [**HERE**](https://console.aws.amazon.com/servicecatalog/home?isSceuc=true#/products) to jump to Service Catalog product console.
+
 9.3.  Select one of the product that you want to provision. Choose **Launch Product**
+
 9.4. On the **Product Version** page, enter the **Provisioned product** name and select the default version. Choose **Next**.
+
 9.5. On the **Parameters** page, enter the requested parameters (differ per each product type). Choose **Next**.
+
 9.6. On the **TagOptions** page, enter any optional tags if you want. Choose **Next**.
+
 9.7. On the **Notification** page, leave the default setting and choose **Next**.
+
 9.8. On the **Review** page, review the selection and choose **Launch**.
+
 9.9. After the provision product launched successfully, explore the newly created resource and confirm if it match the mandatory requirements (encryption enabled by default).
