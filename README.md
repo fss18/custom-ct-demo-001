@@ -45,18 +45,28 @@ In this section of the lab, you will create new Detective guardrail to alert you
 #### Step 1 - Launch stackset to deploy custom detective guardrail
 You will launch a CloudFormation Stackset to deploy this custom detective guardrail into your target OUs.
 
-2.1. Log in to your AWS Control Tower `master` account.
-2.2. Choose the appropriate region.
-2.3. Click on the Launch Stackset button below to start deploying the stack.
+1.1. Log in to your AWS Control Tower `master` account.
+
+1.2. Choose the appropriate region.
+
+1.3. Click on the Launch Stackset button below to start deploying the stack.
 [![LaunchStack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation#/stacksets/create)
-2.4. While on **Create Stackset** page, enter the **Amazon S3 URL**: `https://s3.amazonaws.com/wellysiauw-deployment.us-east-1/config/s3_bucket_serverside_encrypt_config.yml`
-2.5 Choose **NEXT**.
-2.6. On **Specify Stackset details** page, enter your choice for **StackSet name** and choose **NEXT**
-2.7. On **Configure StackSet options** under  **Permission** section, select **Service managed permissions** and choose **NEXT**
-2.8. On **Deployment targets** section, select **Deploy to organizational units (OUs)** and enter the `AWS OU ID` according to notes you took in the **Prerequisite** stage.
-2.9. On **Specify regions** section, select the `AWS Regions` where you would like to deploy this custom config. Control Tower supported regions is can be found [here](https://aws.amazon.com/controltower/faqs/#Availability)
-2.10 Choose **NEXT** to proceed. Review the selection and choose **SUBMIT** to deploy the Stackset.
-2.11. Wait until the stackset operations change to **SUCCEEDED**
+
+1.4. While on **Create Stackset** page, enter the **Amazon S3 URL**: `https://s3.amazonaws.com/wellysiauw-deployment.us-east-1/config/s3_bucket_serverside_encrypt_config.yml`
+
+1.5 Choose **NEXT**.
+
+1.6. On **Specify Stackset details** page, enter your choice for **StackSet name** and choose **NEXT**
+
+1.7. On **Configure StackSet options** under  **Permission** section, select **Service managed permissions** and choose **NEXT**
+
+1.8. On **Deployment targets** section, select **Deploy to organizational units (OUs)** and enter the `AWS OU ID` according to notes you took in the **Prerequisite** stage.
+
+1.9. On **Specify regions** section, select the `AWS Regions` where you would like to deploy this custom config. Control Tower supported regions is can be found [here](https://aws.amazon.com/controltower/faqs/#Availability)
+
+1.10 Choose **NEXT** to proceed. Review the selection and choose **SUBMIT** to deploy the Stackset.
+
+1.11. Wait until the stackset operations change to **SUCCEEDED**
 
 #### Step 2 - Verify the custom detective guardrail
 As of time of writing, custom detective guardrail (Config) is not visible in the Control Tower dashboard, to verify the compliance of custom guardrail you will use AWS Config dashboard at the individual account level.
