@@ -74,10 +74,13 @@ As of time of writing, custom detective guardrail (Config) is not visible in the
 
 > you need to perform this action on another AWS account that is member of the AWS Control Tower, consider using separate browser session.
 
-3.1. Log in to one of the linked AWS account that belongs to the `AWS OU ID` that you specified previously.
-3.2 Click [**HERE**](https://console.aws.amazon.com/config/home#/rules/view) to jump to the AWS Config rules view.
-3.3 In the **AWS Config Rules** page, click the newly created config rule `AWSControlTower_CUSTOM-GR_S3-SSE`
-3.4 Observed the compliance status, try to create incompliance resource (S3 bucket without default encryption enabled) and check how long it takes for AWS Config to detect the incompliance resource.
+2.1. Log in to one of the linked AWS account that belongs to the `AWS OU ID` that you specified previously.
+
+2.2 Click [**HERE**](https://console.aws.amazon.com/config/home#/rules/view) to jump to the AWS Config rules view.
+
+2.3 In the **AWS Config Rules** page, click the newly created config rule `AWSControlTower_CUSTOM-GR_S3-SSE`
+
+2.4 Observed the compliance status, try to create incompliance resource (S3 bucket without default encryption enabled) and check how long it takes for AWS Config to detect the incompliance resource.
 
 #### Step 3 - Receive warning for custom detective guardrail
 
@@ -87,14 +90,21 @@ AWS Control Tower automatically aggregates all security notification into the `A
 
 > you need to perform this action on your `Audit` account, consider using separate browser session.
 
-4.1. Log in to Control Tower `Audit` account using Administrator role.
-4.2 Click [**HERE**](https://console.aws.amazon.com/sns/v3/home#/topics) to jump to the AWS Simple Notification Service (SNS).
-4.3 Find topic with name `aws-controltower-AggregateSecurityNotifications` and click on the topic name.
-4.4 Under **Subscriptions** tab, click **Create Subscription**
-4.5 On the **Create subscription** page, select protocol of your choice, for this lab, choose `Email`.
-4.6 On the **Endpoint** field, enter your email address and click **Create Subscription**
-4.7 Check your email inbox for SNS confirmation email, don't forget to click **Confirm subscription**
-4.8 Now, repeat test that you did previously on Step 2 and review the alert that you receive in your email.
+3.1. Log in to Control Tower `Audit` account using Administrator role.
+
+3.2 Click [**HERE**](https://console.aws.amazon.com/sns/v3/home#/topics) to jump to the AWS Simple Notification Service (SNS).
+
+3.3 Find topic with name `aws-controltower-AggregateSecurityNotifications` and click on the topic name.
+
+3.4 Under **Subscriptions** tab, click **Create Subscription**
+
+3.5 On the **Create subscription** page, select protocol of your choice, for this lab, choose `Email`.
+
+3.6 On the **Endpoint** field, enter your email address and click **Create Subscription**
+
+3.7 Check your email inbox for SNS confirmation email, don't forget to click **Confirm subscription**
+
+3.8 Now, repeat test that you did previously on Step 2 and review the alert that you receive in your email.
 
 ## Lab C - Deploy Custom AWS SCP ##
 In this section of the lab, you will create new Preventive guardrail that will prevent you from creating resource that did not align with the compliance requirements.
