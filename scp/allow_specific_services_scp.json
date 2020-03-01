@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                 "dynamodb:*","rds:*","ec2:*","s3:*","elasticmapreduce:*",
+                 "glacier:*","elasticloadbalancing:*", "cloudwatch:*",
+                 "importexport:*", "cloudformation:*", "redshift:*",
+                 "iam:*", "health:*", "config:*", "snowball:*",
+                 "trustedadvisor:*", "kms:*", "apigateway:*",
+                 "autoscaling:*", "directconnect:*",
+	         "execute-api:*", "sts:*"
+             ],
+             "Effect": "Allow",
+             "Resource": "*"
+        }
+    ]
+}
