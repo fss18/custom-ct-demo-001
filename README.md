@@ -21,9 +21,9 @@ In this lab, you will:
 - If you are still on old console, expand **CloudFormation** on top left and choose **New Console**
 - Stay in one of the supported regions, `us-west-2`, `us-east-2`, `us-east-1`, `eu-west-1` for this lab.
 - Choose one **Organization Unit** as target for custom guardrail deployment.
---   Click [**HERE**](https://console.aws.amazon.com/controltower/home/organizationunits) to view detail of your AWS Organizational units.
---   Click on the Organizational units that you choose as target for deployment.
---   Take note of the ID, it will be in format such as `ou-xxxxxxxxxx`
+-- Click [**HERE**](https://console.aws.amazon.com/controltower/home/organizationunits) to view detail of your AWS Organizational units.
+-- Click on the Organizational units that you choose as target for deployment.
+-- Take note of the ID, it will be in format such as `ou-xxxxxxxxxx`
 
 ## Lab A - Enable Optional Guardrail ##
 In this section of the lab, you will select and enable three optional guardrails.
@@ -63,7 +63,7 @@ You will launch a CloudFormation Stackset to deploy this custom detective guardr
 
 1.8. On **Deployment targets** section, select **Deploy to organizational units (OUs)** and enter the `AWS OU ID` according to notes you took in the **Prerequisite** stage.
 
-1.9. On **Specify regions** section, select the `AWS Regions` where you would like to deploy this custom config. Control Tower supported regions is can be found [here](https://aws.amazon.com/controltower/faqs/#Availability)
+1.9. On **Specify regions** section, select the `AWS Regions` where you would like to deploy this custom config. Control Tower supported regions can be found [here](https://aws.amazon.com/controltower/faqs/#Availability)
 
 1.10 Choose **NEXT** to proceed. Review the selection and choose **SUBMIT** to deploy the Stackset.
 
