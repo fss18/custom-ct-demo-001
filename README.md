@@ -16,14 +16,15 @@ In this lab, you will:
 - Deploy custom AWS Service Catalog to suit your organization needs and compliance.
 
 ## Prerequisites
-- This lab requires an account with Administrator privileges and Control Tower.
-- Use `CloudFormation New Console`. All instructions of this lab are based off new console.
-- If you are still on old console, expand **CloudFormation** on top left and choose **New Console**
-- Stay in one of the supported regions, `us-west-2`, `us-east-2`, `us-east-1`, `eu-west-1` for this lab.
-- Choose one **Organization Unit** as target for custom guardrail deployment.
--- Click [**HERE**](https://console.aws.amazon.com/controltower/home/organizationunits) to view detail of your AWS Organizational units.
--- Click on the Organizational units that you choose as target for deployment.
--- Take note of the ID, it will be in format such as `ou-xxxxxxxxxx`
+1. This lab requires an account with Administrator privileges and Control Tower.
+2. Use `CloudFormation New Console`. All instructions of this lab are based off new console.
+3. If you are still on old console, expand **CloudFormation** on top left and choose **New Console**
+4. Stay in one of the supported regions, `us-west-2`, `us-east-2`, `us-east-1`, `eu-west-1` for this lab.
+5. Choose one **Organization Unit** as target for custom guardrail deployment.
+  - Click [**HERE**](https://console.aws.amazon.com/controltower/home/organizationunits) to view detail of your AWS Organizational units.
+  - Click on the Organizational units that you choose as target for deployment.
+  - Take note of the ID, it will be in format such as `ou-xxxxxxxxxx`
+6. Choose one target account that you will use for test, we will refer this as `Account A` in this lab. `Account A` must be in the same OU ID that you choose above.
 
 ## Lab A - Enable Optional Guardrail ##
 In this section of the lab, you will select and enable three optional guardrails.
@@ -73,9 +74,9 @@ You will launch a CloudFormation Stackset to deploy this custom detective guardr
 As of time of writing, custom detective guardrail (Config) is not visible in the Control Tower dashboard, to verify the compliance of custom guardrail you will use AWS Config dashboard at the individual account level.
 **NOTE** :
 
-> you need to perform this action on another AWS account that is member of the AWS Control Tower, consider using separate browser session.
+> you need to perform this action on AWS account A (see Prerequisite) that is member of the AWS Control Tower, consider using separate browser session.
 
-2.1. Log in to one of the linked AWS account that belongs to the `AWS OU ID` that you specified previously.
+2.1. Log in to AWS `Account A` that belongs to the `AWS OU ID` that you specified previously.
 
 2.2 Click [**HERE**](https://console.aws.amazon.com/config/home#/rules/view) to jump to the AWS Config rules view.
 
@@ -161,9 +162,9 @@ Next you will apply this SCP to one target OU of your choice. Make sure you have
 As of time of writing, custom preventive guardrail (SCP) is not visible in the Control Tower dashboard, to verify the enforcement of custom guardrail you will use attempt to perform action at the individual account level.  
 
 **NOTE** :
-> you need to perform this action on another AWS account that is member of the AWS Control Tower, consider using separate browser session.
+> you need to perform this action on AWS Account A (see Prerequisite) that is member of the AWS Control Tower, consider using separate browser session.
 
-7.1. Log in to one of the linked AWS account that belongs to the `AWS OU ID` that you specified previously.  
+7.1. Log in to AWS `Account A` that belongs to the `AWS OU ID` that you specified previously.
 
 7.2. Perform action such as:
 - [Create EBS volume without encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html) or launch EC2 instance without enabling EBS encryption.
@@ -178,9 +179,9 @@ In this section of the lab, you will deploy new AWS Service Catalog portfolio th
 #### Step 8 - Deploy Service Catalog Portfolio
 
 **NOTE** :
-> you need to perform this action on another AWS account that is member of the AWS Control Tower, consider using separate browser session.
+> you need to perform this action on AWS Account A (see Prerequisite) that is member of the AWS Control Tower, consider using separate browser session.
 
-8.1. Log in to one of the linked AWS account that belongs to the `AWS OU ID` that you specified previously.  
+8.1. Log in to AWS `Account A` that belongs to the `AWS OU ID` that you specified previously.
 
 8.2 Click [**HERE**](https://console.aws.amazon.com/iam/home#/roles) to jump to IAM role console.
 
@@ -218,7 +219,7 @@ Now you can use the Service Catalog product from the portfolio and provision cer
 **NOTE**
 > You must login using AWS SSO with role AWSReservedSSO_AWSAdministratorAccess_xxxxxxxxxx in order to access service catalog product
 
-9.1. Log in to one of the linked AWS account that belongs to the `AWS OU ID` that you specified previously.  
+9.1. Log in to AWS `Account A` that belongs to the `AWS OU ID` that you specified previously.
 
 9.2. Click [**HERE**](https://console.aws.amazon.com/servicecatalog/home?isSceuc=true#/products) to jump to Service Catalog product console.
 
