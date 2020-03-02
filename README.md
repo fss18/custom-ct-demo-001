@@ -7,7 +7,7 @@ AWS Control Tower provides several built in [Guardrails](https://docs.aws.amazon
 
 AWS Service Catalog allows organization to create and manage catalog of IT services. AWS Service Catalog allows you to centrally manage commonly deployed IT services and helps you achieve consistent governance and meet your compliance requirements.
 
-Customer and partners often ask how to add custom guardrail in Control Tower and how to achieve consistent governance going forward.
+Customers and partners often ask how to add custom guardrail in Control Tower and how to achieve consistent governance going forward.
 
 In this lab, you will:
 - Enable optional guardrail built-in from AWS Control Tower.
@@ -50,6 +50,7 @@ You will launch a CloudFormation Stackset to deploy this custom detective guardr
 1.2. Choose the appropriate region.
 
 1.3. Click on the Launch Stackset button below to start deploying the stack.
+
 [![LaunchStack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation#/stacksets/create)
 
 1.4. While on **Create Stackset** page, enter the **Amazon S3 URL**: `https://s3.amazonaws.com/wellysiauw-deployment.us-east-1/config/s3_bucket_serverside_encrypt_config.yml`
@@ -80,7 +81,7 @@ As of time of writing, custom detective guardrail (Config) is not visible in the
 
 2.3 In the **AWS Config Rules** page, click the newly created config rule `AWSControlTower_CUSTOM-GR_S3-SSE`
 
-2.4 Observed the compliance status, try to create incompliance resource (S3 bucket without default encryption enabled) and check how long it takes for AWS Config to detect the incompliance resource.
+2.4 Observe the compliance status, try to create incompliance resource (S3 bucket without default encryption enabled) and check how long it takes for AWS Config to detect the incompliance resource.
 
 #### Step 3 - Receive warning for custom detective guardrail
 
@@ -172,9 +173,7 @@ As of time of writing, custom preventive guardrail (SCP) is not visible in the C
 
 ## Lab D - Deploy Customized Service Catalog Portfolio ##
 
-In this section of the lab, you will deploy new AWS Service Catalog portfolio that encompass all governance discussed above (encryption and public access).
-
-This service catalog porfolio will be deployed directly to the individual target account. For production usage, you can use **CloudFormation Stackset** to manage deployment in multiple accounts, or refer to [**Multi-account Service Catalog pipeline**](https://controltower.aws-management.tools/infrastructure/resource/sc-multiaccount/)
+In this section of the lab, you will deploy new AWS Service Catalog portfolio that encompass all governance discussed above (encryption and public access). For this demo purpose, this service catalog porfolio will be deployed directly to the individual target account.
 
 #### Step 8 - Deploy Service Catalog Portfolio
 
@@ -192,6 +191,7 @@ This service catalog porfolio will be deployed directly to the individual target
 8.5. Take a note of the **Role Name**, it should be in format `AWSReservedSSO_AWSAdministratorAccess_xxxxxxxxxx`
 
 8.6. Click on the Launch Stack button below to start deploying the stack.
+
 [![LaunchStack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation#/stacks/create?templateURL=https://s3.amazonaws.com/wellysiauw-deployment.us-east-1/service-catalog/sc-portfolio-encrypt.json)
 
 8.7. While on **Create Stackset** page, Choose **NEXT**.
@@ -235,3 +235,15 @@ Now you can use the Service Catalog product from the portfolio and provision cer
 9.8. On the **Review** page, review the selection and choose **Launch**.
 
 9.9. After the provision product launched successfully, explore the newly created resource and confirm if it match the mandatory requirements (encryption enabled by default).
+
+## Conclusion ##
+You have successfully deployed optional and custom guardrail into AWS Control Tower to manage governance and compliance requirement of your organization. See additional link below for ideas on how to further customize your deployment.
+
+#### Custom Guardrails ####
+For deploying custom guardrail (SCP and AWS Config) across multiple accounts with automation, consider using [**Customizations for AWS Control Tower**](https://aws.amazon.com/solutions/customizations-for-aws-control-tower/) to build CI/CD pipeline for custom guardrails.
+
+#### Service Catalog Pipeline
+For deploying Service Catalog portfolio across multiple accounts, you can use:
+- [**CloudFormation Stackset**](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html) to manage deployment in multiple accounts. Utilizing AWS Organization built-in support to target specific OUs.
+- [**Multi-account Service Catalog pipeline**](https://controltower.aws-management.tools/infrastructure/resource/sc-multiaccount/) for implementing CI/CD on the service catalog portfolio.
+- [**Portfolio Sharing**](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/catalogs_portfolios_sharing.html) for centralizing portfolio and share it across AWS Organization.
