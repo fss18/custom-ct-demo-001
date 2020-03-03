@@ -1,6 +1,12 @@
 
 ---
 # Custom Guardrail and Service Catalog Demo
+
+## Preface ##
+The Health Information Trust Alliance Common Security Framework (HITRUST CSF) leverages nationally and internationally accepted standards and regulations such as GDPR, ISO, NIST, PCI, and HIPAA to create a comprehensive set of baseline security and privacy controls. HITRUST has developed the HITRUST CSF Assurance Program, which incorporates the common requirements, methodology, and tools that enable an organization and its business partners to take a consistent and incremental approach to managing compliance. Further, it allows business partners and vendors to assess and report against multiple sets of requirements.
+
+AWS customers can design and implement an AWS environment, and use AWS services in a manner that supports the requirements of HITRUST CSF. Customers can also leverage certain controls established under the HITRUST CSF validated assessment of AWS services. HITRUST compliance requires many elements to be successful. Policies, Procedures and proof of effective implementation are all required elements across the various HITRUST domains. When implemented correctly, AWS Control Tower can help customers achieve a more mature level of compliance known as “Measured and Managed”. Implementation of Guardrails, AWS Config rules and service control policies can make ongoing compliance efforts more automated.
+
 ## Overview ##
 
 AWS Control Tower provides several built in [Guardrails](https://docs.aws.amazon.com/controltower/latest/userguide/guardrails-reference.html) that provides ongoing governance for your overall AWS environments. AWS Control Tower implements *preventive* and *detective* guardrails to help you govern your resources and monitor compliance across groups of AWS accounts.
